@@ -28,6 +28,7 @@ no frills no fancy animations. Just simple game logic. Utilising nodes as childr
 3.  MapManager will automatically scan for `ExitNode` and `SpawnNode` instances in the scene.
 4.  Connect nodes visually in the graph to define transitions.
 5.  Add `ConstantNodes` to mark nodes that should persist across scenes.
+6.  Your graph will auto save on leaving the manager. There are loading and saving popups and a delete data if an error occurs.
 
 ## Use Case Example
 
