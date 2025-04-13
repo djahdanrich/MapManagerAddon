@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://wj1yda4ull4k"]
+
+[ext_resource type="PackedScene" uid="uid://c3leo4i2ji0ip" path="res://Map1.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://65vhuaku3nkb" path="res://icon.svg" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cupnhcn2d8myu" path="res://addons/MapManager/Nodes/game_nodes/constant_node.gd" id="3_1bvp3"]
+
+[node name="main" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Map"]
+position = Vector2(182, 152)
+texture = ExtResource("2_h2yge")
+
+[node name="ConstantNode" type="Node" parent="Map/Sprite2D"]
+script = ExtResource("3_1bvp3")
+UID = "cn_f8310cef16"
+move_to_spawn = true
+metadata/_custom_type_script = "uid://cupnhcn2d8myu"

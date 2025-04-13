@@ -1,0 +1,126 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4pb2ipp6a7kj"]
+
+[ext_resource type="Script" uid="uid://5j8nt0o741wm" path="res://addons/MapManager/map_manager_editor.gd" id="1_1prsq"]
+
+[node name="Editor" type="Control"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_1prsq")
+
+[node name="Main" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -4.0
+size_flags_vertical = 3
+
+[node name="ToolBar" type="HBoxContainer" parent="Main"]
+layout_mode = 2
+
+[node name="FileMenu" type="MenuButton" parent="Main/ToolBar"]
+layout_mode = 2
+keep_pressed_outside = true
+text = "File"
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Load MapData"
+popup/item_0/id = 0
+popup/item_1/text = "Save MapData"
+popup/item_1/id = 1
+popup/item_2/text = "Delete MapData"
+popup/item_2/id = 2
+
+[node name="AddMenu" type="MenuButton" parent="Main/ToolBar"]
+layout_mode = 2
+keep_pressed_outside = true
+text = "Add Node"
+switch_on_hover = true
+item_count = 1
+popup/item_0/text = "Add Map"
+popup/item_0/id = 0
+
+[node name="Workspace" type="HSplitContainer" parent="Main"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SidePanel" type="VSplitContainer" parent="Main/Workspace"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Files" type="ItemList" parent="Main/Workspace/SidePanel"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+allow_rmb_select = true
+
+[node name="PopupMenu" type="PopupMenu" parent="Main/Workspace/SidePanel/Files"]
+size = Vector2i(100, 116)
+item_count = 4
+item_0/text = "Save"
+item_0/id = 0
+item_1/text = "Save As"
+item_1/id = 1
+item_2/text = "Close"
+item_2/id = 2
+item_3/text = "Close All"
+item_3/id = 3
+
+[node name="NewDialog" type="FileDialog" parent="Main/Workspace/SidePanel/Files"]
+title = "Create a file"
+size = Vector2i(600, 400)
+mode_overrides_title = false
+filters = PackedStringArray("*.tres; Dialogue File")
+
+[node name="OpenDialog" type="FileDialog" parent="Main/Workspace/SidePanel/Files"]
+title = "Open a file"
+size = Vector2i(600, 400)
+ok_button_text = "Open"
+mode_overrides_title = false
+file_mode = 0
+filters = PackedStringArray("*.tres; Dialogue File")
+
+[node name="SaveDialog" type="FileDialog" parent="Main/Workspace/SidePanel/Files"]
+title = "Save a file"
+size = Vector2i(600, 400)
+mode_overrides_title = false
+filters = PackedStringArray("*.tres; Dialogue File")
+
+[node name="ConfirmationDialog" type="AcceptDialog" parent="Main/Workspace/SidePanel/Files"]
+position = Vector2i(0, 24)
+size = Vector2i(400, 109)
+dialog_text = "The file/s contains unsaved changes. Are you sure you want to close the file/s?"
+dialog_autowrap = true
+
+[node name="GraphWorkspace" type="GraphEdit" parent="Main/Workspace"]
+layout_mode = 2
+right_disconnects = true
+
+[node name="PopupMenu" type="PopupMenu" parent="Main/Workspace"]
+auto_translate_mode = 1
+size = Vector2i(152, 116)
+item_count = 1
+item_0/text = "Add Map"
+item_0/id = 0
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="empty_clicked" from="Main/Workspace/SidePanel/Files" to="Main/Workspace/SidePanel/Files" method="_on_empty_clicked"]
+[connection signal="item_clicked" from="Main/Workspace/SidePanel/Files" to="Main/Workspace/SidePanel/Files" method="_on_item_clicked"]
+[connection signal="item_selected" from="Main/Workspace/SidePanel/Files" to="Main/Workspace/SidePanel/Files" method="_on_file_selected"]
+[connection signal="id_pressed" from="Main/Workspace/SidePanel/Files/PopupMenu" to="Main/Workspace/SidePanel/Files" method="_on_popup_menu_pressed"]
+[connection signal="file_selected" from="Main/Workspace/SidePanel/Files/NewDialog" to="Main/Workspace/SidePanel/Files" method="new_file"]
+[connection signal="file_selected" from="Main/Workspace/SidePanel/Files/OpenDialog" to="Main/Workspace/SidePanel/Files" method="open_file"]
+[connection signal="file_selected" from="Main/Workspace/SidePanel/Files/SaveDialog" to="Main/Workspace/SidePanel/Files" method="save_as"]
+[connection signal="canceled" from="Main/Workspace/SidePanel/Files/ConfirmationDialog" to="Main/Workspace/SidePanel/Files" method="_on_confirm_dialog_canceled"]
+[connection signal="custom_action" from="Main/Workspace/SidePanel/Files/ConfirmationDialog" to="Main/Workspace/SidePanel/Files" method="_on_confirm_dialog_action"]
+[connection signal="connection_request" from="Main/Workspace/GraphWorkspace" to="." method="_on_graph_workspace_connection_request"]
+[connection signal="disconnection_request" from="Main/Workspace/GraphWorkspace" to="." method="_on_graph_workspace_disconnection_request"]
+[connection signal="gui_input" from="Main/Workspace/GraphWorkspace" to="." method="_on_graph_edit_gui_input"]
+[connection signal="id_pressed" from="Main/Workspace/PopupMenu" to="." method="_on_popup_menu_id_pressed"]

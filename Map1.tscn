@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3leo4i2ji0ip"]
+
+[ext_resource type="Script" uid="uid://cnhtsouahuy6s" path="res://addons/MapManager/Nodes/game_nodes/spawn_node.gd" id="1_rad52"]
+[ext_resource type="Script" uid="uid://bsx5k4fgpflub" path="res://addons/MapManager/Nodes/game_nodes/exit_node.gd" id="2_3wee7"]
+[ext_resource type="Script" uid="uid://uhqtuuv8ucp8" path="res://button.gd" id="2_s0gvh"]
+[ext_resource type="Script" uid="uid://ljg1hup4axm8" path="res://label_2.gd" id="3_j556s"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 447.0
+offset_top = 58.0
+offset_right = 600.0
+offset_bottom = 81.0
+text = "this is test level one"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 447.0
+offset_top = 121.0
+offset_right = 604.0
+offset_bottom = 152.0
+text = "Go to test level two"
+script = ExtResource("2_s0gvh")
+
+[node name="GoToTwo" type="Node" parent="Button"]
+script = ExtResource("2_3wee7")
+UID = "ex_a4d7828771"
+metadata/_custom_type_script = "uid://bsx5k4fgpflub"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 856.0
+offset_top = 248.0
+offset_right = 967.0
+offset_bottom = 271.0
+text = "not the spawn"
+script = ExtResource("3_j556s")
+
+[node name="SpawnToOne" type="Node" parent="Label2"]
+script = ExtResource("1_rad52")
+UID = "sn_e34f8389fb"
+map_name = "Map"
+metadata/_custom_type_script = "uid://cnhtsouahuy6s"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

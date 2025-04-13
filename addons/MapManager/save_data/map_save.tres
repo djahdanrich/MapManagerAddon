@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="MapSaveFile" load_steps=2 format=3 uid="uid://cf7740bh10nda"]
+
+[ext_resource type="Script" uid="uid://bohyojp7po8of" path="res://addons/MapManager/MapSave.gd" id="1_eoa2x"]
+
+[resource]
+script = ExtResource("1_eoa2x")
+map_container = ""
+map_dictionary = {
+"Map": {
+"exits": {
+"ex_a4d7828771": {
+"map_name": "",
+"name": &"GoToTwo"
+},
+"ex_f54c7e03e6": {
+"map_name": "",
+"name": &"GoToOne"
+}
+},
+"file_location": "res://Map1.tscn",
+"node_position": Vector2(-180, 240),
+"spawns": {
+"sn_e34f8389fb": {
+"map_name": "Map",
+"name": &"SpawnToOne"
+}
+}
+},
+"Map2": {
+"exits": {
+"ex_f54c7e03e6": {
+"map_name": "",
+"name": &"GoToOne"
+}
+},
+"file_location": "res://maps2.tscn",
+"node_position": Vector2(580, 40),
+"spawns": {
+"sn_cc1a92cd72": {
+"map_name": "Map",
+"name": &"SpawnToTwo"
+}
+}
+}
+}
+connections_dictionary = {
+"ex_a4d7828771": {
+"location": "res://maps2.tscn",
+"spawn_point": "sn_cc1a92cd72"
+},
+"ex_f54c7e03e6": {
+"location": "res://Map1.tscn",
+"spawn_point": "sn_e34f8389fb"
+}
+}

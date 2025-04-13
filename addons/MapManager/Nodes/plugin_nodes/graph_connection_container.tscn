@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm2hvbu820i3l"]
+
+[ext_resource type="Script" uid="uid://cqk2emyxwm754" path="res://addons/MapManager/Nodes/plugin_nodes/graph_connection_container.gd" id="1_ayae2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0plp8"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+
+[node name="ConnectionsPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0plp8")
+script = ExtResource("1_ayae2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="SpawnName" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpawnUID" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="ExitName" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="ExitUID" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
