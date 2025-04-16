@@ -14,7 +14,7 @@ map_dictionary = {
 },
 "ex_f54c7e03e6": {
 "map_name": "",
-"name": &"GoToOne"
+"name": &"GoToOneAsLink"
 }
 },
 "file_location": "res://Map1.tscn",
@@ -30,7 +30,7 @@ map_dictionary = {
 "exits": {
 "ex_f54c7e03e6": {
 "map_name": "",
-"name": &"GoToOne"
+"name": &"GoToOneAsLink"
 }
 },
 "file_location": "res://maps2.tscn",
@@ -44,6 +44,14 @@ map_dictionary = {
 }
 }
 connections_dictionary = {
+&"": {
+"location": "res://Map1.tscn",
+"spawn_point": "sn_e34f8389fb"
+},
+&"SpawnToOne": {
+"location": "res://Map1.tscn",
+"spawn_point": "sn_e34f8389fb"
+},
 "ex_a4d7828771": {
 "location": "res://maps2.tscn",
 "spawn_point": "sn_cc1a92cd72"

@@ -43,9 +43,9 @@ func load_map_manager():
 	if map_editor_graph:
 		map_editor_graph.clear_connections()
 	
-	for child in map_editor_graph.get_children():
-		if child is GraphMapLoader:
-			child.queue_free()
+		for child in map_editor_graph.get_children():
+			if child is GraphMapLoader:
+				child.queue_free()
 	
 	
 	for key in MapManager.map_dictionary:
@@ -53,7 +53,8 @@ func load_map_manager():
 		var node_position : Vector2 = MapManager.map_dictionary[key]["node_position"]
 		
 		new_node.parent = MapManager.map_manager_editor
-		map_manager_editor.graph_workspace.add_child(new_node)
+		if map_manager_editor:
+			map_manager_editor.graph_workspace.add_child(new_node)
 		
 		new_node.set_position_offset(MapManager.map_dictionary[key]["node_position"])
 		new_node._file_selected(MapManager.map_dictionary[key]["file_location"])

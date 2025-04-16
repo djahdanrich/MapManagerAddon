@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://uppb2kf8cum7"]
+[gd_scene load_steps=6 format=3 uid="uid://uppb2kf8cum7"]
 
 [ext_resource type="Script" uid="uid://cnhtsouahuy6s" path="res://addons/MapManager/Nodes/game_nodes/spawn_node.gd" id="1_m2gd7"]
 [ext_resource type="Script" uid="uid://bsx5k4fgpflub" path="res://addons/MapManager/Nodes/game_nodes/exit_node.gd" id="2_162d7"]
 [ext_resource type="Script" uid="uid://ljg1hup4axm8" path="res://label_2.gd" id="3_0jevu"]
 [ext_resource type="Script" uid="uid://uhqtuuv8ucp8" path="res://button.gd" id="3_162d7"]
+[ext_resource type="Script" uid="uid://sbcuetokjvra" path="res://button_2.gd" id="3_j38gj"]
 
 [node name="Map2" type="Node2D"]
 
@@ -22,10 +23,18 @@ offset_bottom = 108.0
 text = "click me"
 script = ExtResource("3_162d7")
 
-[node name="GoToOne" type="Node" parent="Button"]
+[node name="GoToOneAsLink" type="Node" parent="Button"]
 script = ExtResource("2_162d7")
 UID = "ex_f54c7e03e6"
 metadata/_custom_type_script = "uid://bsx5k4fgpflub"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 561.0
+offset_top = 245.0
+offset_right = 632.0
+offset_bottom = 276.0
+text = "spawn to as a global"
+script = ExtResource("3_j38gj")
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 109.0
@@ -39,6 +48,8 @@ script = ExtResource("3_0jevu")
 script = ExtResource("1_m2gd7")
 UID = "sn_cc1a92cd72"
 map_name = "Map"
+global_spawn = true
 metadata/_custom_type_script = "uid://cnhtsouahuy6s"
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]

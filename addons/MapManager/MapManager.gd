@@ -55,7 +55,6 @@ func listen_for_spawn(spawn : SpawnNode):
 		await new_map_loaded
 		if spawn.UID == spawn_to_find:
 			spawn_found.emit(spawn)
-			
 
 
 func listen_for_exit(exit : ExitNode):
@@ -84,9 +83,11 @@ func move_maps(UID : String, exit_owner : Node):
 	
 	old_map.queue_free()
 	new_map_loaded.emit()
-	
+
+
 func alert_constant(exit_node : ExitNode):
 	alert_constant_node.emit(exit_node)
+
 
 func process_reparent(constant : ConstantNode):
 	var constant_parent = constant.get_parent()
@@ -101,4 +102,3 @@ func process_reparent(constant : ConstantNode):
 		var spawn_parent = spawn_to.get_parent()
 		
 		constant_parent.global_position = spawn_parent.global_position
-		

@@ -27,6 +27,19 @@ script = ExtResource("2_3wee7")
 UID = "ex_a4d7828771"
 metadata/_custom_type_script = "uid://bsx5k4fgpflub"
 
+[node name="Button2" type="Button" parent="."]
+offset_left = 447.0
+offset_top = 121.0
+offset_right = 604.0
+offset_bottom = 152.0
+text = "Go to test level two"
+script = ExtResource("2_s0gvh")
+
+[node name="GoToTwo" type="Node" parent="Button2"]
+script = ExtResource("2_3wee7")
+UID = "ex_a4d7828771"
+metadata/_custom_type_script = "uid://bsx5k4fgpflub"
+
 [node name="Label2" type="Label" parent="."]
 offset_left = 856.0
 offset_top = 248.0
@@ -39,6 +52,8 @@ script = ExtResource("3_j556s")
 script = ExtResource("1_rad52")
 UID = "sn_e34f8389fb"
 map_name = "Map"
+global_spawn = true
 metadata/_custom_type_script = "uid://cnhtsouahuy6s"
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
